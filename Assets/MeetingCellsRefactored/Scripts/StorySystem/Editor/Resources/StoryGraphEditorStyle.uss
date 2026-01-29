@@ -1,0 +1,27 @@
+/* Story Graph Editor Style */
+
+:root {
+    --node-border: #2e2e2e;
+    --node-bg: #2b2b2b;
+    --node-title: #3a3a3a;
+}
+
+.graph-view {
+    background-color: #1f1f1f;
+}
+
+.node {
+    background-color: var(--node-bg);
+    border-color: var(--node-border);
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+.node .title {
+    background-color: var(--node-title);
+    color: #e5e5e5;
+}
+
+.port {
+    color: #d0d0d0;
+}
