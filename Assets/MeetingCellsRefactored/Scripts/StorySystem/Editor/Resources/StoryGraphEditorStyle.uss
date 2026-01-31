@@ -10,18 +10,186 @@
     background-color: #1f1f1f;
 }
 
+/* Node container */
 .node {
     background-color: var(--node-bg);
     border-color: var(--node-border);
     border-width: 1px;
     border-radius: 6px;
+    min-width: 140px;
+    width: auto;
+    max-width: none;
+    overflow: visible;
 }
 
+/* Title section */
 .node .title {
     background-color: var(--node-title);
     color: #e5e5e5;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: #252525;
 }
 
+/* Main content area - holds input/output containers */
+.node #node-border {
+    border-width: 0;
+}
+
+.node #contents {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 8px 0;
+    overflow: visible;
+}
+
+/* Input container (left side) */
+/* Input container (left side) */
+.node #input {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* Output container (right side) */
+.node #output {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-right: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* Port styling for proper interaction */
 .port {
-    color: #d0d0d0;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 4px 0;
+    align-items: center;
+    flex-direction: row;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+/* Input ports - label on right of connector */
+.port-input {
+    flex-direction: row;
+    margin-left: -6px;
+    padding-left: 2px;
+}
+
+.port-input .unity-label {
+    margin-left: 4px;
+    margin-right: 0;
+}
+
+/* Output ports - label on left of connector */
+.port-output {
+    flex-direction: row-reverse;
+    margin-right: -6px;
+    padding-right: 2px;
+}
+
+.port-output .unity-label {
+    margin-right: 4px;
+    margin-left: 0;
+}
+
+.story-port {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Connector - the clickable circle */
+.port .connector {
+    width: 12px;
+    height: 12px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #888888;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: #555555;
+    border-right-color: #555555;
+    border-top-color: #555555;
+    border-bottom-color: #555555;
+    position: relative;
+    overflow: visible;
+}
+
+/* Hover state */
+.port:hover .connector {
+    background-color: #ffffff;
+    border-left-color: #aaaaaa;
+    border-right-color: #aaaaaa;
+    border-top-color: #aaaaaa;
+    border-bottom-color: #aaaaaa;
+    width: 14px;
+    height: 14px;
+}
+
+/* Color-coded connectors */
+.port-input .connector {
+    background-color: #4a9eff;
+    border-color: #2a6ecc;
+}
+
+.port-output .connector {
+    background-color: #ff9e4a;
+    border-color: #cc6e2a;
+}
+
+.port-input:hover .connector {
+    background-color: #6ab8ff;
+    border-color: #4a9eff;
+}
+
+.port-output:hover .connector {
+    background-color: #ffb86a;
+    border-color: #ff9e4a;
+}
+
+/* Port label styling */
+.port .unity-label {
+    font-size: 11px;
+    color: #cccccc;
+    -unity-text-align: middle-left;
+    flex-shrink: 0;
+}
+
+/* Edge/Connection styling */
+.edge {
+    stroke: #888888;
+    stroke-width: 2px;
+}
+
+.edge:hover {
+    stroke: #ffffff;
+    stroke-width: 3px;
+}
+
+/* Selection rectangle */
+.selection-rect {
+    border-color: #4a90d9;
+    border-width: 1px;
+    background-color: rgba(74, 144, 217, 0.2);
+}
+
+/* Grid background */
+.grid-background {
+    --grid-background-color: #1f1f1f;
+    --line-color: #333333;
+    --thick-line-color: #3a3a3a;
+    --spacing: 20;
 }

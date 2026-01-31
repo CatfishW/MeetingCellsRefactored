@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using StorySystem.Core;
+using StorySystem.Execution;
 
 namespace StorySystem.Nodes
 {

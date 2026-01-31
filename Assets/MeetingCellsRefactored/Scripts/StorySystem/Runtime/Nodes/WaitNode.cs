@@ -30,6 +30,12 @@ namespace StorySystem.Nodes
         public override string Category => "Flow";
         public override Color NodeColor => new Color(0.5f, 0.5f, 0.7f);
 
+        protected override void SetupPorts()
+        {
+            AddInputPort("Input", "input");
+            AddOutputPort("Output", "output");
+        }
+
         public override StoryNodeResult Execute(StoryContext context)
         {
             switch (waitType)

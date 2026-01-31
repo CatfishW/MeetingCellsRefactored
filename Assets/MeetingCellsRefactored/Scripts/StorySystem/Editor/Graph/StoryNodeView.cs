@@ -23,6 +23,21 @@ namespace StorySystem.Editor
 
             style.left = node.Position.x;
             style.top = node.Position.y;
+            style.minWidth = 140;
+            style.width = StyleKeyword.Auto;
+            style.maxWidth = StyleKeyword.None;
+
+            // Configure input container (left side)
+            inputContainer.style.flexDirection = FlexDirection.Column;
+            inputContainer.style.alignItems = Align.FlexStart;
+            inputContainer.style.paddingLeft = 0;
+            inputContainer.style.marginLeft = 0;
+
+            // Configure output container (right side)
+            outputContainer.style.flexDirection = FlexDirection.Column;
+            outputContainer.style.alignItems = Align.FlexEnd;
+            outputContainer.style.paddingRight = 0;
+            outputContainer.style.marginRight = 0;
 
             CreatePorts();
             RefreshExpandedState();

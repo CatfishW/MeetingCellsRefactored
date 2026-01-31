@@ -18,6 +18,12 @@ namespace StorySystem.Nodes
         public override string Category => "Logic";
         public override Color NodeColor => new Color(0.4f, 0.7f, 0.4f);
 
+        protected override void SetupPorts()
+        {
+            AddInputPort("Input", "input");
+            AddOutputPort("Output", "output");
+        }
+
         public void AddOperation(string variableName, VariableOperationType operation, string value)
         {
             operations.Add(new VariableOperation

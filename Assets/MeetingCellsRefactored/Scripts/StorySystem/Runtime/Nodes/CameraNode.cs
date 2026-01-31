@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using StorySystem.Core;
+using StorySystem.Execution;
 
 namespace StorySystem.Nodes
 {
@@ -37,6 +38,12 @@ namespace StorySystem.Nodes
         public override string DisplayName => "Camera";
         public override string Category => "Cinematic";
         public override Color NodeColor => new Color(0.8f, 0.6f, 0.8f);
+
+        protected override void SetupPorts()
+        {
+            AddInputPort("Input", "input");
+            AddOutputPort("Output", "output");
+        }
 
         public override StoryNodeResult Execute(StoryContext context)
         {

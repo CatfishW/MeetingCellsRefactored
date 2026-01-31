@@ -1,3 +1,4 @@
+# Unity generated folders and files
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -38,6 +39,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.app
+*.exe
+*.zip
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -51,3 +55,26 @@ crashlytics-build.properties
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# AI Agent Tooling
+.gemini/
+.gemini-clipboard/
+.agent/
+.cursor/
+.claude/
+
+# Temporary/External Folders
+temp_moltbot/
+openclaw/
+
+# Log and temporary files
+gateway_err.log
+gateway_out.log
+restore_log.txt
+robocopy_log.txt
+nul
+allow-all.json
+
+# Local Configuration
+FIX_SETUP_GUIDE.md
+STORY_SYSTEM_FIXES_SUMMARY.md

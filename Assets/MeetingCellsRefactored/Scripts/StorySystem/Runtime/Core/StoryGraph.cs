@@ -65,12 +65,17 @@ namespace StorySystem.Core
         public void AddNode(StoryNode node)
         {
             if (node == null || nodes.Contains(node)) return;
-            
+
             nodes.Add(node);
-            
+
 #if UNITY_EDITOR
-            UnityEditor.AssetDatabase.AddObjectToAsset(node, this);
-            UnityEditor.EditorUtility.SetDirty(this);
+            // Only add as sub-asset if this graph is already saved to disk
+            string path = UnityEditor.AssetDatabase.GetAssetPath(this);
+            if (!string.IsNullOrEmpty(path))
+            {
+                UnityEditor.AssetDatabase.AddObjectToAsset(node, this);
+                UnityEditor.EditorUtility.SetDirty(this);
+            }
 #endif
         }
 

@@ -1,0 +1,23 @@
+{
+    "name": "MeetingCellsRefactored.Player",
+    "rootNamespace": "MeetingCellsRefactored.Player",
+    "references": [
+        "Unity.InputSystem",
+        "Unity.Cinemachine",
+        "MeetingCellsRefactored.UI",
+        "Unity.CharacterController",
+        "Unity.Entities",
+        "Unity.Entities.Hybrid",
+        "Unity.Mathematics",
+        "Unity.Collections"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

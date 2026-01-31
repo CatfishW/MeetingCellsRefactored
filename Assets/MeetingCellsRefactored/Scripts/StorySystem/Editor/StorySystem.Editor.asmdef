@@ -1,0 +1,19 @@
+{
+    "name": "StorySystem.Editor",
+    "rootNamespace": "StorySystem.Editor",
+    "references": [
+        "StorySystem.Runtime",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

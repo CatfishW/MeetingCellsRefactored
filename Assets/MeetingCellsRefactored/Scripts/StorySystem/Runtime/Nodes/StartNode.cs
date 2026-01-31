@@ -22,6 +22,7 @@ namespace StorySystem.Nodes
         protected override void SetupPorts()
         {
             // Start nodes only have output
+            // Use "output" as ID to match standard connection format
             AddOutputPort("Start", "output");
         }
 

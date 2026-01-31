@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -56,12 +57,16 @@ namespace StorySystem.Editor
             }
 
             // Create edges
+            int edgeCount = 0;
+            int failedConnections = 0;
             foreach (var connection in graph.Connections)
             {
                 var outputNodeView = GetNodeById(connection.OutputNodeId);
                 var inputNodeView = GetNodeById(connection.InputNodeId);
                 if (outputNodeView == null || inputNodeView == null)
                 {
+                    Debug.LogWarning($"[StoryGraphView] Cannot create edge: node not found. Output: {connection.OutputNodeId}, Input: {connection.InputNodeId}");
+                    failedConnections++;
                     continue;
                 }
 
@@ -69,6 +74,10 @@ namespace StorySystem.Editor
                 var inputPort = inputNodeView.GetPort(connection.InputPortId);
                 if (outputPort == null || inputPort == null)
                 {
+                    Debug.LogWarning($"[StoryGraphView] Cannot create edge: port not found. " +
+                        $"Output: {connection.OutputPortId} on {outputNodeView.Node.DisplayName}, " +
+                        $"Input: {connection.InputPortId} on {inputNodeView.Node.DisplayName}");
+                    failedConnections++;
                     continue;
                 }
 
@@ -81,6 +90,16 @@ namespace StorySystem.Editor
                 edge.output.Connect(edge);
                 edge.input.Connect(edge);
                 AddElement(edge);
+                edgeCount++;
+            }
+
+            if (failedConnections > 0)
+            {
+                Debug.LogWarning($"[StoryGraphView] Failed to create {failedConnections} connections. See warnings above for details.");
+            }
+            else if (edgeCount > 0)
+            {
+                Debug.Log($"[StoryGraphView] Created {edgeCount} edges successfully.");
             }
 
             if (graph.ViewScale > 0f)
@@ -188,8 +207,23 @@ namespace StorySystem.Editor
         {
             if (edge.output is StoryPortView outputPort && edge.input is StoryPortView inputPort)
             {
-                var outputNode = outputPort.NodeView.Node;
-                var inputNode = inputPort.NodeView.Node;
+                var outputNode = outputPort.NodeView?.Node;
+                var inputNode = inputPort.NodeView?.Node;
+
+                if (outputNode == null || inputNode == null)
+                {
+                    Debug.LogError("[StoryGraphView] Cannot create connection: Node reference is null.");
+                    RemoveElement(edge);
+                    return;
+                }
+
+                if (outputPort.PortData == null || inputPort.PortData == null)
+                {
+                    Debug.LogError("[StoryGraphView] Cannot create connection: Port data is null.");
+                    RemoveElement(edge);
+                    return;
+                }
+
                 var connection = graph.CreateConnection(outputNode.NodeId, outputPort.PortData.PortId,
                     inputNode.NodeId, inputPort.PortData.PortId);
 
@@ -200,7 +234,18 @@ namespace StorySystem.Editor
                     {
                         storyEdge.ConnectionData = connection;
                     }
+                    Debug.Log($"[StoryGraphView] Created connection: {outputNode.DisplayName}.{outputPort.PortData.PortName} -> {inputNode.DisplayName}.{inputPort.PortData.PortName}");
                 }
+                else
+                {
+                    Debug.LogWarning($"[StoryGraphView] Graph.CreateConnection returned null for {outputNode.NodeId}.{outputPort.PortData.PortId} -> {inputNode.NodeId}.{inputPort.PortData.PortId}. Possible duplicate or invalid connection.");
+                    RemoveElement(edge);
+                }
+            }
+            else
+            {
+                Debug.LogError("[StoryGraphView] Cannot create connection: Invalid port types.");
+                RemoveElement(edge);
             }
         }
 
@@ -248,11 +293,25 @@ namespace StorySystem.Editor
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
-            var compatiblePorts = ports.ToList();
-            compatiblePorts.RemoveAll(port =>
-                port == startPort ||
-                port.node == startPort.node ||
-                port.direction == startPort.direction);
+            var compatiblePorts = new List<Port>();
+
+            foreach (var port in ports)
+            {
+                // Skip if same port
+                if (port == startPort)
+                    continue;
+
+                // Skip if same node
+                if (port.node == startPort.node)
+                    continue;
+
+                // Skip if same direction
+                if (port.direction == startPort.direction)
+                    continue;
+
+                compatiblePorts.Add(port);
+            }
+
             return compatiblePorts;
         }
     }

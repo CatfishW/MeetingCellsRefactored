@@ -1,0 +1,18 @@
+{
+    "name": "MeetingCellsRefactored.UI",
+    "rootNamespace": "MeetingCellsRefactored.UI",
+    "references": [
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "Unity.Cinemachine"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

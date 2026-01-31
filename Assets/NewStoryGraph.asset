@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5747436138735911669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c233d9213f95e4680873437743931a, type: 3}
+  m_Name: StartNode
+  m_EditorClassIdentifier: StorySystem.Runtime::StorySystem.Nodes.StartNode
+  nodeId: 7abbf0dd-50ad-4432-9bdc-7ef9649f92a7
+  nodeName: Start
+  nodeDescription: 
+  position: {x: 62, y: 110.66667}
+  inputPorts: []
+  outputPorts:
+  - portId: output
+    portName: Start
+    direction: 1
+    capacity: 0
+    portColor: {r: 0.8, g: 0.2, b: 0.2, a: 1}
+  isBreakpoint: 0
+  startLabel: Start
+  isDefaultStart: 1
+--- !u!114 &-5680222464994311821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a80b32f00e77494d8825f44e0bd2895, type: 3}
+  m_Name: CutsceneNode
+  m_EditorClassIdentifier: StorySystem.Runtime::StorySystem.Nodes.CutsceneNode
+  nodeId: 2a782c91-44b4-459a-96d5-ee77b0688a57
+  nodeName: Cutscene
+  nodeDescription: 
+  position: {x: 358.66666, y: 102}
+  inputPorts:
+  - portId: input
+    portName: Input
+    direction: 0
+    capacity: 0
+    portColor: {r: 0.2, g: 0.8, b: 0.2, a: 1}
+  outputPorts:
+  - portId: complete
+    portName: Complete
+    direction: 1
+    capacity: 0
+    portColor: {r: 0.8, g: 0.2, b: 0.2, a: 1}
+  - portId: skipped
+    portName: Skipped
+    direction: 1
+    capacity: 0
+    portColor: {r: 0.8, g: 0.2, b: 0.2, a: 1}
+  isBreakpoint: 0
+  cutsceneName: 
+  timelineAsset: {fileID: 0}
+  cutsceneId: 
+  cutsceneType: 0
+  skippable: 1
+  skipHoldTime: 1
+  pauseGameplay: 1
+  hideUI: 1
+  bindings: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63b56f02ebe66745a1169bb62260466, type: 3}
+  m_Name: NewStoryGraph
+  m_EditorClassIdentifier: StorySystem.Runtime::StorySystem.Core.StoryGraph
+  graphId: 0257d09d-a3be-482b-903e-aa36479ad060
+  graphName: NewStoryGraph
+  description: 
+  nodes:
+  - {fileID: -5747436138735911669}
+  - {fileID: -5680222464994311821}
+  - {fileID: 1574786544383955039}
+  connections: []
+  variables: []
+  viewOffset: {x: 0, y: 0}
+  viewScale: 1
+--- !u!114 &1574786544383955039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8146d2bd2daae8145b59133d713c6614, type: 3}
+  m_Name: AudioNode
+  m_EditorClassIdentifier: StorySystem.Runtime::StorySystem.Nodes.AudioNode
+  nodeId: a149078e-5970-4032-8d90-69a22d318f85
+  nodeName: Audio
+  nodeDescription: 
+  position: {x: 417.33334, y: 297.33334}
+  inputPorts:
+  - portId: input
+    portName: Input
+    direction: 0
+    capacity: 0
+    portColor: {r: 0.2, g: 0.8, b: 0.2, a: 1}
+  outputPorts:
+  - portId: output
+    portName: Output
+    direction: 1
+    capacity: 0
+    portColor: {r: 0.8, g: 0.2, b: 0.2, a: 1}
+  isBreakpoint: 0
+  audioClip: {fileID: 0}
+  audioClipPath: 
+  audioType: 0
+  action: 0
+  volume: 1
+  fadeTime: 0
+  loop: 0
+  waitForCompletion: 0
+  audioChannel: default

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using StorySystem.Core;
+using StorySystem.Execution;
 
 namespace StorySystem.Nodes
 {
@@ -33,6 +34,12 @@ namespace StorySystem.Nodes
         public override string DisplayName => "Audio";
         public override string Category => "Audio";
         public override Color NodeColor => new Color(0.2f, 0.7f, 0.8f);
+
+        protected override void SetupPorts()
+        {
+            AddInputPort("Input", "input");
+            AddOutputPort("Output", "output");
+        }
 
         public override StoryNodeResult Execute(StoryContext context)
         {

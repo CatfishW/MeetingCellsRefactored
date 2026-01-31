@@ -1,0 +1,24 @@
+{
+    "name": "MeetingCellsRefactored.CharacterController",
+    "rootNamespace": "",
+    "references": [
+        "Unity.CharacterController",
+        "Unity.Entities",
+        "Unity.Entities.Hybrid",
+        "Unity.Mathematics",
+        "Unity.Physics",
+        "Unity.Transforms",
+        "Unity.Burst",
+        "Unity.Collections",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

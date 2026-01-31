@@ -133,19 +133,31 @@ namespace StorySystem.Serialization
         {
             try
             {
-                var json = JsonUtility.FromJson<StoryGraphJson>(jsonString);
-                
-                // For complex nested objects, we need custom parsing
+                // Use MiniJson for full parsing since JsonUtility doesn't handle nested lists
                 var fullJson = MiniJson.Deserialize(jsonString) as Dictionary<string, object>;
-                
-                var graph = ScriptableObject.CreateInstance<StoryGraph>();
-                graph.Initialize(json.graphId, json.graphName);
-                graph.SetDescription(json.description);
+                if (fullJson == null)
+                {
+                    Debug.LogError("Failed to parse JSON");
+                    return null;
+                }
 
-                if (fullJson.TryGetValue("viewState", out var viewStateObj) && 
+                var graph = ScriptableObject.CreateInstance<StoryGraph>();
+
+                // Parse basic fields
+                string graphId = fullJson.TryGetValue("graphId", out var idObj) ? idObj.ToString() : Guid.NewGuid().ToString();
+                string graphName = fullJson.TryGetValue("graphName", out var nameObj) ? nameObj.ToString() : "Imported Graph";
+                graph.Initialize(graphId, graphName);
+
+                if (fullJson.TryGetValue("description", out var descObj))
+                {
+                    graph.SetDescription(descObj.ToString());
+                }
+
+                // Parse view state
+                if (fullJson.TryGetValue("viewState", out var viewStateObj) &&
                     viewStateObj is Dictionary<string, object> viewState)
                 {
-                    if (viewState.TryGetValue("offset", out var offsetObj) && 
+                    if (viewState.TryGetValue("offset", out var offsetObj) &&
                         offsetObj is Dictionary<string, object> offset)
                     {
                         graph.ViewOffset = new Vector2(
@@ -162,6 +174,7 @@ namespace StorySystem.Serialization
                 // Deserialize nodes
                 if (fullJson.TryGetValue("nodes", out var nodesObj) && nodesObj is List<object> nodesList)
                 {
+                    Debug.Log($"[StorySerializer] Deserializing {nodesList.Count} nodes");
                     foreach (var nodeObj in nodesList)
                     {
                         if (nodeObj is Dictionary<string, object> nodeData)
@@ -170,9 +183,19 @@ namespace StorySystem.Serialization
                             if (node != null)
                             {
                                 graph.AddNode(node);
+                                Debug.Log($"[StorySerializer] Added node: {node.DisplayName} ({node.NodeId}) with {node.InputPorts.Count} inputs, {node.OutputPorts.Count} outputs");
+                            }
+                            else
+                            {
+                                Debug.LogError($"[StorySerializer] Failed to create node from data: {nodeData}");
                             }
                         }
                     }
+                    Debug.Log($"[StorySerializer] Total nodes in graph: {graph.Nodes.Count}");
+                }
+                else
+                {
+                    Debug.LogWarning("[StorySerializer] No nodes found in JSON or nodes is not a list");
                 }
 
                 // Deserialize connections
@@ -182,12 +205,39 @@ namespace StorySystem.Serialization
                     {
                         if (connObj is Dictionary<string, object> connData)
                         {
-                            graph.CreateConnection(
-                                connData["outputNodeId"].ToString(),
-                                connData["outputPortId"].ToString(),
-                                connData["inputNodeId"].ToString(),
-                                connData["inputPortId"].ToString()
+                            // Defensive parsing with TryGetValue to handle malformed JSON
+                            if (!connData.TryGetValue("outputNodeId", out var outNodeId) || outNodeId == null)
+                            {
+                                Debug.LogWarning("Skipping connection with missing outputNodeId");
+                                continue;
+                            }
+                            if (!connData.TryGetValue("outputPortId", out var outPortId) || outPortId == null)
+                            {
+                                Debug.LogWarning("Skipping connection with missing outputPortId");
+                                continue;
+                            }
+                            if (!connData.TryGetValue("inputNodeId", out var inNodeId) || inNodeId == null)
+                            {
+                                Debug.LogWarning("Skipping connection with missing inputNodeId");
+                                continue;
+                            }
+                            if (!connData.TryGetValue("inputPortId", out var inPortId) || inPortId == null)
+                            {
+                                Debug.LogWarning("Skipping connection with missing inputPortId");
+                                continue;
+                            }
+
+                            var connection = graph.CreateConnection(
+                                outNodeId.ToString(),
+                                outPortId.ToString(),
+                                inNodeId.ToString(),
+                                inPortId.ToString()
                             );
+
+                            if (connection == null)
+                            {
+                                Debug.LogWarning($"Failed to create connection: {outNodeId}.{outPortId} -> {inNodeId}.{inPortId}");
+                            }
                         }
                     }
                 }
@@ -214,7 +264,7 @@ namespace StorySystem.Serialization
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Failed to parse story JSON: {ex.Message}");
+                Debug.LogError($"Failed to parse story JSON: {ex.Message}\n{ex.StackTrace}");
                 return null;
             }
         }
@@ -294,20 +344,57 @@ namespace StorySystem.Serialization
             private Dictionary<string, object> ParseObject()
             {
                 Dictionary<string, object> table = new Dictionary<string, object>();
-                json.Read(); // {
+                json.Read(); // consume {
+
+                // Handle empty object {}
+                EatWhitespace();
+                if (json.Peek() == '}')
+                {
+                    json.Read(); // consume }
+                    return table;
+                }
+
                 while (true)
                 {
-                    switch (NextToken)
+                    EatWhitespace();
+                    if (json.Peek() == -1) return null;
+                    if (json.Peek() == '}')
                     {
-                        case TOKEN.NONE: return null;
-                        case TOKEN.CURLY_CLOSE: return table;
-                        default:
-                            string name = ParseString();
-                            if (name == null) return null;
-                            if (NextToken != TOKEN.COLON) return null;
-                            json.Read();
-                            table[name] = ParseValue();
-                            break;
+                        json.Read(); // consume }
+                        return table;
+                    }
+
+                    // Parse key (must be string)
+                    if (PeekChar != '"') return null;
+                    string name = ParseString();
+                    if (name == null) return null;
+
+                    // Parse colon
+                    EatWhitespace();
+                    if (json.Peek() == -1) return null;
+                    if (PeekChar != ':') return null;
+                    json.Read(); // consume :
+
+                    // Parse value
+                    object value = ParseValue();
+                    table[name] = value;
+
+                    // After value, expect comma or closing brace
+                    EatWhitespace();
+                    if (json.Peek() == -1) return null;
+                    if (PeekChar == ',')
+                    {
+                        json.Read(); // consume comma
+                        continue;
+                    }
+                    else if (PeekChar == '}')
+                    {
+                        json.Read(); // consume }
+                        return table;
+                    }
+                    else
+                    {
+                        return null; // Unexpected character
                     }
                 }
             }
@@ -315,22 +402,53 @@ namespace StorySystem.Serialization
             private List<object> ParseArray()
             {
                 List<object> array = new List<object>();
-                json.Read(); // [
-                bool parsing = true;
-                while (parsing)
+                json.Read(); // consume [
+
+                // Handle empty array []
+                EatWhitespace();
+                if (json.Peek() == ']')
                 {
-                    TOKEN nextToken = NextToken;
-                    switch (nextToken)
+                    json.Read(); // consume ]
+                    return array;
+                }
+
+                while (true)
+                {
+                    EatWhitespace();
+                    if (json.Peek() == -1) return null; // Unexpected end
+
+                    // Parse value
+                    object value = ParseValue();
+                    if (value != null)
+                        array.Add(value);
+
+                    // After value, expect comma or closing bracket
+                    EatWhitespace();
+                    if (json.Peek() == -1) return null;
+
+                    char nextChar = PeekChar;
+                    if (nextChar == ',')
                     {
-                        case TOKEN.NONE: return null;
-                        case TOKEN.SQUARED_CLOSE: parsing = false; break;
-                        default:
-                            object value = ParseByToken(nextToken);
-                            array.Add(value);
-                            break;
+                        json.Read(); // consume comma
+                        // After comma, if next non-whitespace is ], it's a trailing comma (handle gracefully)
+                        EatWhitespace();
+                        if (json.Peek() == ']')
+                        {
+                            json.Read(); // consume ]
+                            return array;
+                        }
+                        continue; // More values to parse
+                    }
+                    else if (nextChar == ']')
+                    {
+                        json.Read(); // consume ]
+                        return array;
+                    }
+                    else
+                    {
+                        return null; // Unexpected character
                     }
                 }
-                return array;
             }
 
             private object ParseValue()

@@ -51,10 +51,12 @@ namespace StorySystem.Core
 
         /// <summary>
         /// Setup input and output ports. Override in derived classes.
+        /// IMPORTANT: Use stable port IDs (not random GUIDs) so connections persist correctly.
         /// </summary>
         protected virtual void SetupPorts()
         {
             // Default: one input, one output
+            // Use stable IDs so JSON serialization works correctly
             AddInputPort("Input", "input");
             AddOutputPort("Output", "output");
         }

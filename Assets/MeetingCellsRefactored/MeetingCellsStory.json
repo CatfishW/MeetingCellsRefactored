@@ -1,0 +1,36 @@
+{
+    "graphId": "7e7478a6-a525-479e-b9a3-7a515d34dfc5",
+    "graphName": "MeetingCellsStory",
+    "description": "",
+    "nodes": [
+        {
+            "nodeId": "cf091b79-662b-4a5a-9807-d4e982f2656a",
+            "nodeType": "StorySystem.Nodes.StartNode",
+            "nodeName": "Start",
+            "nodeDescription": "",
+            "position": {
+                "x": 95.33333587646485,
+                "y": 132.6666717529297
+            }
+        },
+        {
+            "nodeId": "1de3fa14-f209-4bca-b348-5617db63da65",
+            "nodeType": "StorySystem.Nodes.CutsceneNode",
+            "nodeName": "Cutscene",
+            "nodeDescription": "",
+            "position": {
+                "x": 239.3333282470703,
+                "y": 108.66667175292969
+            }
+        }
+    ],
+    "connections": [],
+    "variables": [],
+    "viewState": {
+        "offset": {
+            "x": 14.0,
+            "y": 0.0
+        },
+        "scale": 1.0
+    }
+}

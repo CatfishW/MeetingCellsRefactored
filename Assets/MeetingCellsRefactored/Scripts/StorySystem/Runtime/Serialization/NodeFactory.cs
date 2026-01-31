@@ -88,6 +88,15 @@ namespace StorySystem.Serialization
             string nodeId = data.TryGetValue("nodeId", out var idObj) ? idObj.ToString() : Guid.NewGuid().ToString();
             node.Initialize(nodeId, position);
 
+            // Ensure ports are set up (some nodes may need explicit port setup)
+            // The Initialize method calls SetupPorts(), but we verify here
+            if (node.InputPorts.Count == 0 && node.OutputPorts.Count == 0)
+            {
+                Debug.LogWarning($"Node {nodeId} of type {typeName} has no ports after initialization. Calling SetupPorts() again.");
+                var setupMethod = nodeType.GetMethod("SetupPorts", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                setupMethod?.Invoke(node, null);
+            }
+
             // Load custom data
             if (data.TryGetValue("data", out var customData) && customData is Dictionary<string, object> customDict)
             {
