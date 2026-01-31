@@ -1,23 +1,3 @@
-using UnityEngine;
-using Unity.Entities;
-
-[DisallowMultipleComponent]
-public class FirstPersonPlayerAuthoring : MonoBehaviour
-{
-    public GameObject ControlledCharacter;
-    public float LookInputSensitivity = 0.2f;
-
-    class FirstPersonPlayerBaker : Baker<FirstPersonPlayerAuthoring>
-    {
-        public override void Bake(FirstPersonPlayerAuthoring authoring)
-        {
-            Entity entity = GetEntity(TransformUsageFlags.None);
-            AddComponent(entity, new FirstPersonPlayer
-            {
-                ControlledCharacter = GetEntity(authoring.ControlledCharacter, TransformUsageFlags.Dynamic),
-                LookInputSensitivity = authoring.LookInputSensitivity,
-            });
-            AddComponent<FirstPersonPlayerInputs>(entity);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:429fbb483aa2a8d57b87058427c3079e25fe08b51b22c263026130e383a7c650
+size 782

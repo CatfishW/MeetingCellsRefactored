@@ -1,20 +1,3 @@
-using UnityEngine;
-using Unity.Entities;
-
-[DisallowMultipleComponent]
-public class CameraTargetAuthoring : MonoBehaviour
-{
-    public GameObject Target;
-
-    class CameraTargetBaker : Baker<CameraTargetAuthoring>
-    {
-        public override void Bake(CameraTargetAuthoring authoring)
-        {
-            Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent(entity, new CameraTarget
-            {
-                TargetEntity = GetEntity(authoring.Target, TransformUsageFlags.Dynamic),
-            });
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ed10e6a230b6a74ee2cc7942cad34ede2391b3b0df9ac17ba95de53e843a7e90
+size 551

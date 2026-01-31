@@ -1,27 +1,3 @@
-using System;
-using Unity.Entities;
-using Unity.Mathematics;
-using UnityEngine;
-using Unity.CharacterController;
-
-[Serializable]
-public struct ThirdPersonCharacterComponent : IComponentData
-{
-    public float RotationSharpness;
-    public float GroundMaxSpeed;
-    public float GroundedMovementSharpness;
-    public float AirAcceleration;
-    public float AirMaxSpeed;
-    public float AirDrag;
-    public float JumpSpeed;
-    public float3 Gravity;
-    public bool PreventAirAccelerationAgainstUngroundedHits;
-    public BasicStepAndSlopeHandlingParameters StepAndSlopeHandling;
-}
-
-[Serializable]
-public struct ThirdPersonCharacterControl : IComponentData
-{
-    public float3 MoveVector;
-    public bool Jump;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:67412793c0e6263ee8a8840f0d906f200a89cfea4ecc9e9e8ece4687184f9c3a
+size 713

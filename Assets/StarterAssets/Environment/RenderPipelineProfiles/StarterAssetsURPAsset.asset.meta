@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: f48f873ae78af40b9a7b8220a8c6f95f
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/StarterAssets/Environment/RenderPipelineProfiles/StarterAssetsURPAsset.asset
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:5ea14e6fd3ae0625c06ab23e8098cb25ad7b2ac9338eacc3977b93c6fd2b900d
+size 478

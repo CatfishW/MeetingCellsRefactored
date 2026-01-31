@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: e5f4daf24146ee040b5a2d7a73b30aa0
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/MeetingCellsRefactored/Prefabs/Box_100x100x100_Prefab.prefab
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:6ccea90dd0032e47e3a1a165f34c82274ffbbaea5a34dac23f597850f2a39739
+size 427

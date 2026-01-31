@@ -1,16 +1,3 @@
-using UnityEditor;
-using UnityEngine;
-
-namespace Unity.CharacterController.Editor
-{
-#if !ENABLE_INPUT_SYSTEM
-    [InitializeOnLoad]
-    class InputSystemWarning
-    {
-        static InputSystemWarning()
-        {
-            Debug.LogWarning("Warning: The Standard Characters use the \"Input System\" package for input handling. Character control input will not work until the \"Input System\" package has been imported.");
-        }
-    }
-#endif
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:45a2c1883eb32943f64149f03591c9e8ed42e4c2a4817cb54efc8b330eac26d1
+size 449

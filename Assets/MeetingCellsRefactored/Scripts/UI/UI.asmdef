@@ -1,18 +1,3 @@
-{
-    "name": "MeetingCellsRefactored.UI",
-    "rootNamespace": "MeetingCellsRefactored.UI",
-    "references": [
-        "Unity.TextMeshPro",
-        "Unity.InputSystem",
-        "Unity.Cinemachine"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a7e320a8ec69b58c19015064dfdf37d3219b254b2c01b8e7734494840c471512
+size 493

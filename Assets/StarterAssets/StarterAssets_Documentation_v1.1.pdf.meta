@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: b5f957873a5b82042967195ffffc9063
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/StarterAssets/StarterAssets_Documentation_v1.1.pdf
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:7a759d19b8ccfe38fe3ed9e04a3509088833d2f1546025876d7350f8da59edf7
+size 418

@@ -1,23 +1,3 @@
-using UnityEngine;
-using Unity.Entities;
-
-[DisallowMultipleComponent]
-public class ThirdPersonPlayerAuthoring : MonoBehaviour
-{
-    public GameObject ControlledCharacter;
-    public GameObject ControlledCamera;
-
-    class ThirdPersonPlayerBaker : Baker<ThirdPersonPlayerAuthoring>
-    {
-        public override void Bake(ThirdPersonPlayerAuthoring authoring)
-        {
-            Entity entity = GetEntity(TransformUsageFlags.None);
-            AddComponent(entity, new ThirdPersonPlayer
-            {
-                ControlledCharacter = GetEntity(authoring.ControlledCharacter, TransformUsageFlags.Dynamic),
-                ControlledCamera = GetEntity(authoring.ControlledCamera, TransformUsageFlags.Dynamic),
-            });
-            AddComponent<ThirdPersonPlayerInputs>(entity);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1afe22a16d46f108af4d9c29fd15476d897e111824b3cfaa67a26de8c8c26426
+size 807

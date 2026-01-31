@@ -1,29 +1,3 @@
-using Unity.Entities;
-using Unity.Burst;
-
-namespace StorySystem.ECS
-{
-    /// <summary>
-    /// Bootstrap system that initializes the story ECS world
-    /// </summary>
-    [BurstCompile]
-    [UpdateInGroup(typeof(InitializationSystemGroup))]
-    public partial struct StorySystemBootstrap : ISystem
-    {
-        [BurstCompile]
-        public void OnCreate(ref SystemState state)
-        {
-            // Ensure required systems are present
-            state.RequireForUpdate<StoryExecution>();
-        }
-
-        [BurstCompile]
-        public void OnDestroy(ref SystemState state) { }
-
-        [BurstCompile]
-        public void OnUpdate(ref SystemState state)
-        {
-            // Bootstrap logic if needed
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:deb363c0c13e2d8f9d66a42887bff806f190183909dc8cea5260d6f2240d8064
+size 761

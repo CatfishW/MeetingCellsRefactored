@@ -1,24 +1,3 @@
-using Unity.Entities;
-using UnityEngine;
-
-[DisallowMultipleComponent]
-public class FirstPersonCharacterViewAuthoring : MonoBehaviour
-{
-    public GameObject Character;
-
-    class FirstPersonCharacterViewBaker : Baker<FirstPersonCharacterViewAuthoring>
-    {
-        public override void Bake(FirstPersonCharacterViewAuthoring authoring)
-        {
-            if (authoring.transform.parent != authoring.Character.transform)
-            {
-                Debug.LogError("ERROR: the Character View must be a direct 1st-level child of the character authoring GameObject. Conversion will be aborted");
-                return;
-            }
-
-            Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent(entity, new FirstPersonCharacterView { CharacterEntity = GetEntity(authoring.Character, TransformUsageFlags.Dynamic) });
-        }
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:87f6284420e0e56cc3fbd4d691fca7b4c8a079e6ccac65f5e1bc6c5020fe2472
+size 870

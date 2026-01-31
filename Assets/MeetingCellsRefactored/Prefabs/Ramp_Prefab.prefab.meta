@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: 8a7437817844dce4894b049de73b75f2
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/MeetingCellsRefactored/Prefabs/Ramp_Prefab.prefab
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:8af7bb280ad8129bfae58d6fd5f1218f66675f661a0a09eff4d36e03f1dbdebc
+size 416

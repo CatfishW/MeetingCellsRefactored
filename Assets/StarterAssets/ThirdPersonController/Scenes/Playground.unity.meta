@@ -1,15 +1,3 @@
-fileFormatVersion: 2
-guid: e9017d5f96b9f09489b4b37e1d6eb914
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/StarterAssets/ThirdPersonController/Scenes/Playground.unity
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:78b95b1111984461da2f9ccfff4ee85067776f7c820edd4d5e9edfd6754c1cb7
+size 427

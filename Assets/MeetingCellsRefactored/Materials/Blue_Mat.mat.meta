@@ -1,16 +1,3 @@
-fileFormatVersion: 2
-guid: 979aef027a1c86c42a15ce35fce366fa
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 196526
-  packageName: Starter Assets - ThirdPerson | Updates in new CharacterController
-    package
-  packageVersion: 1.1.5
-  assetPath: Assets/MeetingCellsRefactored/Materials/Blue_Mat.mat
-  uploadId: 691128
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0e339358be8736a3f176dbb1266eceecda8746e3f6a541f685010f53d80a6fc
+size 446

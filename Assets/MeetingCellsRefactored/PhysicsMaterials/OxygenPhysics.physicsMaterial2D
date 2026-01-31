@@ -1,11 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!62 &6200000
-PhysicsMaterial2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: OxygenPhysics
-  friction: 5
-  bounciness: 0.1
+version https://git-lfs.github.com/spec/v1
+oid sha256:1de86ede77665c39b7f0bfd0391d78947b565e2a9f15e00b88e2fd0c7518f97f
+size 273
