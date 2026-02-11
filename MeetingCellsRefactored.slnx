@@ -1,15 +1,17 @@
 ﻿<Solution>
-  <Project Path="StorySystem.Runtime.csproj" />
   <Project Path="MeetingCellsRefactored.UI.csproj" />
+  <Project Path="MeetingCellsRefactored.UI.Editor.csproj" />
+  <Project Path="StorySystem.Runtime.csproj" />
   <Project Path="StorySystem.Editor.csproj" />
+  <Project Path="MeetingCellsRefactored.StoryEvents.csproj" />
   <Project Path="MeetingCellsRefactored.CharacterController.csproj" />
   <Project Path="StorySystem.UI.csproj" />
   <Project Path="MeetingCellsRefactored.Player.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="StarterAssets.csproj" />
   <Project Path="MeetingCellsRefactored.UI.Tests.csproj" />
   <Project Path="StorySystem.UI.Editor.csproj" />
-  <Project Path="StarterAssets.csproj" />
-  <Project Path="MeetingCellsRefactored.UI.Editor.csproj" />
   <Project Path="StorySystem.UI.Bridge.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MeetingCellsRefactored.StoryEvents.PlayModeTests.csproj" />
 </Solution>
