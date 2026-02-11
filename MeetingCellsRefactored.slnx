@@ -6,6 +6,7 @@
   <Project Path="MeetingCellsRefactored.StoryEvents.csproj" />
   <Project Path="MeetingCellsRefactored.CharacterController.csproj" />
   <Project Path="StorySystem.UI.csproj" />
+  <Project Path="MeetingCellsRefactored.StoryEvents.EditModeTests.csproj" />
   <Project Path="MeetingCellsRefactored.Player.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="StarterAssets.csproj" />
@@ -13,5 +14,6 @@
   <Project Path="StorySystem.UI.Editor.csproj" />
   <Project Path="StorySystem.UI.Bridge.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MeetingCellsRefactored.StoryEvents.Editor.csproj" />
   <Project Path="MeetingCellsRefactored.StoryEvents.PlayModeTests.csproj" />
 </Solution>
