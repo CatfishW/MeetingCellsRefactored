@@ -3,7 +3,9 @@
   <Project Path="MeetingCellsRefactored.UI.Editor.csproj" />
   <Project Path="StorySystem.Runtime.csproj" />
   <Project Path="StorySystem.Editor.csproj" />
+  <Project Path="MeetingCellsRefactored.NPC.csproj" />
   <Project Path="MeetingCellsRefactored.StoryEvents.csproj" />
+  <Project Path="MeetingCellsRefactored.NPC.Editor.csproj" />
   <Project Path="MeetingCellsRefactored.CharacterController.csproj" />
   <Project Path="StorySystem.UI.csproj" />
   <Project Path="MeetingCellsRefactored.StoryEvents.EditModeTests.csproj" />
